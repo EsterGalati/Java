@@ -1,6 +1,8 @@
+package atividade3;
+
 import java.util.Scanner;
 
-public class Midia {
+public class midia {
     private int codigo;
     private double preco;
     private String name;
@@ -32,12 +34,12 @@ public class Midia {
     }
 
     // Construtor sem parâmetros.
-    public Midia() {
+    public midia() {
         this(0, 0.0, "Nenhum"); // Chamada ao construtor com param.
     }
 
     // Construtor com parâmetros.
-    public Midia(int codigo, double preco, String name) {
+    public midia(int codigo, double preco, String name) {
         setCodigo(codigo);
         setPreco(preco);
         setName(name);

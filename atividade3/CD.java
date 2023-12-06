@@ -1,9 +1,8 @@
 package atividade3;
 
 import java.util.Scanner;
-import midia;
 
-public class CD extends Midia {
+public class CD extends midia {
     private int nMusicas;
 
     // Construtor sem parâmetros.

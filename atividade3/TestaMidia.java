@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TestaMidia {
     public static void main(String args[]) {
         // Cria um vetor de elementos que são objetos da classe Midia.
-        Midia[] lista = new Midia[10];
+        midia[] lista = new midia[10];
 
         int opcao;
 

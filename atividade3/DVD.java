@@ -1,7 +1,8 @@
 package atividade3;
+
 import java.util.Scanner;
 
-public class DVD extends Midia {
+public class DVD extends midia {
     private int nFaixas;
 
     // Construtor sem parâmetros.

@@ -1,6 +1,7 @@
+package atividade3;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
 
 class Veiculo {
     protected String modelo;
@@ -19,12 +20,10 @@ class Veiculo {
         System.out.println("Modelo: " + modelo + " Preço: " + preco);
     }
 
-    
     public void ajustarPreco(double ajuste) {
         this.preco += ajuste;
     }
 }
-
 
 class Moto extends Veiculo {
     private int ano;
@@ -45,7 +44,6 @@ class Moto extends Veiculo {
     }
 }
 
-
 class Carro extends Veiculo {
     private double km;
 
@@ -65,13 +63,11 @@ class Carro extends Veiculo {
     }
 }
 
-
 public class CadastroVeiculos {
     public static void main(String[] args) {
-        
+
         ArrayList<Veiculo> veiculos = new ArrayList<>();
 
-        
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 System.out.println("Escolha o tipo de veículo (Moto ou Carro) ou digite 'sair' para encerrar:");
@@ -87,7 +83,6 @@ public class CadastroVeiculos {
                 System.out.println("Digite o preço do veículo:");
                 double preco = 0;
 
-                
                 boolean validInput = false;
                 while (!validInput) {
                     try {
@@ -102,7 +97,6 @@ public class CadastroVeiculos {
                     System.out.println("Digite o ano da moto:");
                     int ano = 0;
 
-                    
                     validInput = false;
                     while (!validInput) {
                         try {
@@ -113,14 +107,12 @@ public class CadastroVeiculos {
                         }
                     }
 
-                    
                     Moto moto = new Moto(modelo, preco, ano);
                     veiculos.add(moto);
                 } else if (tipoVeiculo.equalsIgnoreCase("Carro")) {
                     System.out.println("Digite a quilometragem do carro:");
                     double km = 0;
 
-                    
                     validInput = false;
                     while (!validInput) {
                         try {
@@ -131,7 +123,6 @@ public class CadastroVeiculos {
                         }
                     }
 
-                    
                     Carro carro = new Carro(modelo, preco, km);
                     veiculos.add(carro);
                 } else {
@@ -139,7 +130,6 @@ public class CadastroVeiculos {
                 }
             }
 
-            
             System.out.println("\nRelatório de Veículos:");
 
             for (Veiculo veiculo : veiculos) {
@@ -147,33 +137,28 @@ public class CadastroVeiculos {
                 System.out.println();
             }
 
-            
             double totalAntesAjustes = veiculos.stream().mapToDouble(Veiculo::getPreco).sum();
             System.out.println("Total de preços antes dos ajustes: " + totalAntesAjustes);
 
-            
             System.out.println("\nDigite o valor de ajuste para os preços (ou 0 se nenhum ajuste):");
             double ajuste = 0;
 
-          
+            boolean validInputAjuste = false;
+            while (!validInputAjuste) {
+                try {
+                    ajuste = Double.parseDouble(scanner.nextLine());
+                    validInputAjuste = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, digite um valor válido para o ajuste.");
+                }
+            }
 
-boolean validInputAjuste = false;
-while (!validInputAjuste) {
-    try {
-        ajuste = Double.parseDouble(scanner.nextLine());
-        validInputAjuste = true;
-    } catch (NumberFormatException e) {
-        System.out.println("Por favor, digite um valor válido para o ajuste.");
-    }
-}
+            for (Veiculo veiculo : veiculos) {
+                veiculo.ajustarPreco(ajuste);
+            }
 
-for (Veiculo veiculo : veiculos) {
-    veiculo.ajustarPreco(ajuste);
-}
-           
             double totalAposAjustes = veiculos.stream().mapToDouble(Veiculo::getPreco).sum();
             System.out.println("Total de preços após os ajustes: " + totalAposAjustes);
         }
     }
 }
-
